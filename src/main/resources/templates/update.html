@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" >
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form action="/policy/updatePolicyinfo" th:object="${policy}" method="post">
+    Status:<h4 th:text="${policy.status == null ? 'Draft' : 'Bound' }" ></h4>
+    PolicyNo: <input type="text" name="pno" th:field="${policy.policyNo}" >
+    Policy name:<input type="text" name="pname" th:field="${policy.policyHolderName}" >
+    Address1 <input type="text" name="add1" th:field="${policy.addressline1}" />
+    Address2 <input type="text" name="add2" th:field="${policy.addressline2}" />
+
+
+    <input type="submit" value="submit" />
+</form>
+</body>
+</html>

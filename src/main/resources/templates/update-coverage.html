@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form action="/policy/updateCoverage" th:object="${cos}">
+ <h4>Select Coverages: </h4>
+ <div th:each="coverage:${coverages}">
+    <input type="checkbox" name="covs" th:text="${coverage.coverageName}" th:value="${coverage.cid}"
+           th:checked="${cos.contains(coverage)}" >
+</div>
+</form>
+</body>
+</html>

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form th:action="@{/policy/updateState}" th:object="${policy}" method="post">
+   <input type="hidden" th:field="${policy.policyNo}" />
+    <h4>Select States:</h4>
+    <select name="state">
+        <option th:each="state:${states}" th:text="${state.stateName}" th:value="${state.sid}" th:selected="${policy.state != null ? state.stateName.equalsIgnoreCase(policy.state.stateName) : false}"></option>
+    </select>
+
+    <input type="submit" value="next"/>
+</form>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+</head>
+<body>
+   <a th:href="@{/policy/add}" class="btn btn-primary">AddPolicy</a>
+   <table class="table table-bordered table-stripped">
+
+       <thead class="table-dark">
+          <td>Policy No</td>
+          <td>PolicyHolderName</td>
+          <td>Address line1</td>
+          <td>Address line2</td>
+          <td>Status</td>
+          <td>States</td>
+          <td>Coverages</td>
+          <td>Premium Amount</td>
+          <td>Actions</td>
+       </thead>
+       <tbody>
+          <tr th:each="policy:${policys}">
+              <td th:text="${policy.policyNo}" ></td>
+              <td th:text="${policy.policyHolderName}" ></td>
+              <td th:text="${policy.addressline1}" ></td>
+              <td th:text="${policy.addressline2}" ></td>
+              <td th:text="${policy.status}"></td>
+              <td th:text="${policy.state.stateName}" ></td>
+              <td>
+                  <ul th:each="coverage:${policy.coverages}">
+                      <li th:text="${coverage.coverageName}" ></li>
+                  </ul>
+              </td>
+              <td th:text="${policy.preminumAmount}"></td>
+              <td ><a th:href="@{/policy/update(pid=${policy.policyNo})}" >Update</a> </td>
+          </tr>
+       </tbody>
+   </table>
+</body>
+</html>
